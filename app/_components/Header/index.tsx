@@ -1,26 +1,30 @@
-import Image from "next/image";
 import Link from 'next/link';
+import { FaGithub } from "react-icons/fa";
 
-const twStyles = {
-  // ヘッダーのスタイル
-  headerTop:"text-gray-600 body-font bg-gray-100",
-  header01:"container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center",
-  header01Right:"flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0",
-  header01Left:"md:ml-auto flex flex-wrap items-center text-base justify-center",
-  header01titleSub:"tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
-}
+
 
 export default function Header(){
   return(
-    <header className={`${twStyles.headerTop}`}>
-      <div className={`${twStyles.header01}`}>
-        <div className={`${twStyles.header01Right}`}>
-          <Link href={'/'} className="text-3xl">Next.js practice</Link>
+    <header className="w-full px-6 py-4 bg-purple-200">
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
+        <div className="flex flex-col">
+          <h1 className="text-xl font-light"> webエンジニア・技術集</h1>
+          <p className="text-sm text-muted-foreground">Web Engineer/Technical Collection</p>
         </div>
-        <div className={`${twStyles.header01Left}`}>
-          <Link href="https://zenn.dev/akfm/books/nextjs-basic-principle" className="mr-5 hover:text-gray-900" target="_blank">Next.jsについて</Link>
-          <Link href="https://www.youtube.com/watch?v=Ca1h3KUfQ5k" className="mr-5 hover:text-gray-900" target="_blank">ベストプラクティス</Link>
-        </div>
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="/" className="hover:text-muted-foreground transition-colors">
+            HOME
+          </Link>
+          <Link href="#" className="hover:text-muted-foreground transition-colors">
+            Document_list
+          </Link>
+          <Link href="#" className="hover:text-muted-foreground transition-colors">
+            News&Topics
+          </Link>
+          <Link href="https://instagram.com" className="hover:text-muted-foreground transition-colors">
+            <FaGithub className="w-5 h-5" />
+          </Link>
+        </nav>
       </div>
     </header>
   );

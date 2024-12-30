@@ -13,3 +13,15 @@ Ok to proceed? (y) y
 
 - [初期設定について](./document/initial_setup.md)
 
+## 追加ライブラリ
+```
+# mackdown
+npm install react-markdown remark-gfm
+npm install @tailwindcss/typography
+
+```
+
+- tailwind.config.tsに追記
+```js
+plugins: [require("@tailwindcss/typography")],  // 追記
+```
