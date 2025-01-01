@@ -14,8 +14,9 @@ Ok to proceed? (y) y
 - [初期設定について](./document/initial_setup.md)
 
 ## 追加ライブラリ
-```
+```sh
 # mackdown
+## https://qiita.com/soma-k/items/9c1c901fdca27080d1d3
 npm install react-markdown remark-gfm
 npm install @tailwindcss/typography
 

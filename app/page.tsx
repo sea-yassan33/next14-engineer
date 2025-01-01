@@ -32,7 +32,7 @@ export default function Home() {
                 <div className="mb-4 flex justify-center">
                   <FcDocument className="w-12 h-12"/>
                 </div>
-                <Link href='#'>
+                <Link href={'/document-list'}>
                   <Button className="bg-blue-600 hover:bg-blue-700">Document List</Button>
                 </Link>
               </CardContent>
@@ -47,7 +47,6 @@ export default function Home() {
                 </Button>
               </CardContent>
             </Card>
-
             <Card className="text-center p-6">
               <CardContent className="pt-6">
                 <div className="mb-4 flex justify-center">

@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "title": "DataFrameのforループ処理",
+        "content": "# title\nDataFrameのforループ処理\n\n# 概要\n- 繰り返し処理のためのメソッドiterrows()を使って１行ずつ取り出す\n- .iterrows()に時間がかかるよう\n- 脱iterrows()を試みて実行時間を高速化する\n\n## iterrows()\n```python\nimport pandas as pd\n# データフレーム用意\ndata = {\n    'Name': ['Taro', 'Hanako', 'Jiro'],\n    'Age': [25, 30, 35],\n    'City': ['Tokyo', 'Osaka', 'Nagoya']\n}\ndf = pd.DataFrame(data)\n\n# iterrows()を使って各行を処理する\nfor index, row in df.iterrows():\n    print(f\"Index: {index}\")\n    print(f\"Name: {row['Name']}, Age: {row['Age']}, City: {row['City']}\")\n    print()\n```\n\n- 出力結果\n```sh\nIndex: 0\nName: Taro, Age: 25, City: Tokyo\n\nIndex: 1\nName: Hanako, Age: 30, City: Osaka\n\nIndex: 2\nName: Jiro, Age: 35, City: Nagoya\n```\n\n## .iterrows()に時間が要する為、改善案\n```python\nmap_colmun_and_index = {}\nfor index, colmun in enumerate(df.columns, 0):\n    map_colmun_and_index[colmun] = index\n\nfor row in df.values:\n    # something to do\n    target_colom = row[map_colmun_and_index['特定のカラム名']]\n```\n- \n\n## 参考\n- [Pandasのiterrows()でデータフレームの行をループ処理](https://www.salesanalytics.co.jp/datascience/datascience243/)\n- [脱iterrows()を試みたら実行時間が約70倍高速化](https://qiita.com/daikikatsuragawa/items/1658134af600be2c1c16)",
+        "language": "Python",
+        "updatedAt": "2025-01-01 09:05:43"
+    }
+]
