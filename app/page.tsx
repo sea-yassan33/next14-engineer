@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from 'next/link';
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle,} from "@/components/ui/card"
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent} from "@/components/ui/card"
 import { FcDocument } from "react-icons/fc";
 import { FaRegNewspaper } from "react-icons/fa6";
 import { AiFillQuestionCircle } from "react-icons/ai";
+import DocumentList from "./_components/DocumentList";
+import { documents } from "@/public/data/document";
 
 export default function Home() {
-
+  // updatedAtで新しい順に並び替え
+  const docmentData = documents.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+　
   return (
     <main className="min-h-screen">
       <section className="relative h-[400px]">
@@ -58,46 +60,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="flex-1 overflow-y-auto">
-        <div className="grid gap-6 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:p-6">
-          <Card className="col-span-2 md:col-span-3 lg:col-span-4">
-            <CardHeader>
-              <CardTitle>New Docment -top3-</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Title</TableHead>
-                    <TableHead>language</TableHead>
-                    <TableHead>Create Date</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">Redesign homepage</TableCell>
-                    <TableCell>
-                      <Badge variant="secondary">In Progress</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <time dateTime="2023-04-30">April 30, 2023</time>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">Implement new analytics dashboard</TableCell>
-                    <TableCell>
-                      <Badge variant="secondary">In Progress</Badge>
-                    </TableCell>
-                    <TableCell>
-                      <time dateTime="2023-05-15">May 15, 2023</time>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <h2 className="text-gray-600 text-3xl font-bold m-2 font-sans">New Document -Top3-</h2>
+      <DocumentList documents={docmentData} num={3} id_flag={false}/>
     </main>
   );
 }

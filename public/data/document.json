@@ -2,8 +2,15 @@
     {
         "id": 1,
         "title": "DataFrameのforループ処理",
-        "content": "# title\nDataFrameのforループ処理\n\n# 概要\n- 繰り返し処理のためのメソッドiterrows()を使って１行ずつ取り出す\n- .iterrows()に時間がかかるよう\n- 脱iterrows()を試みて実行時間を高速化する\n\n## iterrows()\n```python\nimport pandas as pd\n# データフレーム用意\ndata = {\n    'Name': ['Taro', 'Hanako', 'Jiro'],\n    'Age': [25, 30, 35],\n    'City': ['Tokyo', 'Osaka', 'Nagoya']\n}\ndf = pd.DataFrame(data)\n\n# iterrows()を使って各行を処理する\nfor index, row in df.iterrows():\n    print(f\"Index: {index}\")\n    print(f\"Name: {row['Name']}, Age: {row['Age']}, City: {row['City']}\")\n    print()\n```\n\n- 出力結果\n```sh\nIndex: 0\nName: Taro, Age: 25, City: Tokyo\n\nIndex: 1\nName: Hanako, Age: 30, City: Osaka\n\nIndex: 2\nName: Jiro, Age: 35, City: Nagoya\n```\n\n## .iterrows()に時間が要する為、改善案\n```python\nmap_colmun_and_index = {}\nfor index, colmun in enumerate(df.columns, 0):\n    map_colmun_and_index[colmun] = index\n\nfor row in df.values:\n    # something to do\n    target_colom = row[map_colmun_and_index['特定のカラム名']]\n```\n- \n\n## 参考\n- [Pandasのiterrows()でデータフレームの行をループ処理](https://www.salesanalytics.co.jp/datascience/datascience243/)\n- [脱iterrows()を試みたら実行時間が約70倍高速化](https://qiita.com/daikikatsuragawa/items/1658134af600be2c1c16)",
-        "language": "Python",
+        "language": "python",
+        "content": "# title\nDataFrameのforループ処理\n# 言語\npython\n\n# 概要\n- 繰り返し処理のためのメソッドiterrows()を使って１行ずつ取り出す\n- .iterrows()に時間がかかるよう\n- 脱iterrows()を試みて実行時間を高速化する\n\n## iterrows()\n```python\nimport pandas as pd\n# データフレーム用意\ndata = {\n    'Name': ['Taro', 'Hanako', 'Jiro'],\n    'Age': [25, 30, 35],\n    'City': ['Tokyo', 'Osaka', 'Nagoya']\n}\ndf = pd.DataFrame(data)\n\n# iterrows()を使って各行を処理する\nfor index, row in df.iterrows():\n    print(f\"Index: {index}\")\n    print(f\"Name: {row['Name']}, Age: {row['Age']}, City: {row['City']}\")\n    print()\n```\n\n- 出力結果\n```sh\nIndex: 0\nName: Taro, Age: 25, City: Tokyo\n\nIndex: 1\nName: Hanako, Age: 30, City: Osaka\n\nIndex: 2\nName: Jiro, Age: 35, City: Nagoya\n```\n\n## .iterrows()に時間が要する為、改善案\n```python\nmap_colmun_and_index = {}\nfor index, colmun in enumerate(df.columns, 0):\n    map_colmun_and_index[colmun] = index\n\nfor row in df.values:\n    # something to do\n    target_colom = row[map_colmun_and_index['特定のカラム名']]\n```\n- \n\n## 参考\n- [Pandasのiterrows()でデータフレームの行をループ処理](https://www.salesanalytics.co.jp/datascience/datascience243/)\n- [脱iterrows()を試みたら実行時間が約70倍高速化](https://qiita.com/daikikatsuragawa/items/1658134af600be2c1c16)",
         "updatedAt": "2025-01-01 09:05:43"
+    },
+    {
+        "id": 2,
+        "title": "pandasで重複を削除",
+        "language": "python",
+        "content": "# title\npandasで重複を削除\n# 言語\npython\n\n# 概要\n- pandasで重複を削除\n\n## リストから重複を削除\n\n以下の手順で、数字の配列から重複を取り除くコードを作成します。\n- 数字の配列を受け取る。\n- setを使って重複を取り除く。\n- 結果をリストに変換して返す\n\n```python\ndef remove_duplicates(numbers):\n    return list(set(numbers))\n\n# 使用例\nnumbers = [1, 2, 2, 3, 4, 4, 5]\nunique_numbers = remove_duplicates(numbers)\nprint(unique_numbers)  # 出力: [1, 2, 3, 4, 5]\n```\n\n## Pandasのデータフレームから重複を取り除き、結果をテキストファイルに出力するコードを作成\n- Pandasをインポートする。\n- データフレームを作成する。\n- drop_duplicatesメソッドを使って重複を取り除く。\n- 結果をテキストファイルに出力する。\n\n```python\nimport pandas as pd\n\n# データフレームの作成\ndata = {\n    'numbers': [1, 2, 2, 3, 4, 4, 5],\n}\ndf = pd.DataFrame(data)\n\n# 重複を取り除く\ndf_unique = df.drop_duplicates()\n# テキストファイルに出力\ndf_unique.to_csv('unique_data.txt', index=False)\n```\n\n## 参考\n- ",
+        "updatedAt": "2025-01-01 09:53:34"
     }
 ]

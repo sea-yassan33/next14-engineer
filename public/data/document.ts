@@ -3,8 +3,8 @@ import docments from '@/public/data/document.json';
 export interface Document {
   id: number;
   title: string;
-  content: string;
   language: string;
+  content: string;
   updatedAt: string;
 }
 
